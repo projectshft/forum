@@ -8,21 +8,20 @@
 
 <body>
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-8 col-md-offset-2">
 
       <div class="page-header">
         <h1>Forum</h1>
       </div>
 
       <div class="posts">
-        <table>
-          <tr>
-            <th>Username</th>
-            <th>Message</th>
-            <th>Quality</th>
-          </tr>
-        </table>
+        <div class="Rtable" id="header">
+          <div class="Rtable-cell Rtable-cell-narrow Rtable-cell-header"><h4>Username</h4></div>
+          <div class="Rtable-cell Rtable-cell-wide Rtable-cell-header"><h4>Message</h4></div>
+          <div class="Rtable-cell Rtable-cell-narrow Rtable-cell-header"><h4>Quality</h4></div>
+          <div class="Rtable-cell Rtable-cell-narrow Rtable-cell-empty"><h4></h4></div>
       </div>
+    </div>
 
       <form style="margin-top:30px;">
         <h3>Add a new post</h3>
@@ -38,7 +37,6 @@
         <button type="button" class="btn btn-primary submit">Post</button>
       </form>
 
-    </div>
   </div>
   <script src="main.js"></script>
 
