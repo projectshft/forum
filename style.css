@@ -1,0 +1,30 @@
+table, th, td {
+    border: 1px solid black;
+    padding: 15px;
+}
+
+table {
+    border-spacing: 15px;
+    width: 100%;
+}
+
+th {
+  background-color: lightgray
+}
+
+th:first-of-type {
+  width: 25%;
+}
+
+th:nth-of-type(2) {
+  width: 300%;
+}
+
+td {
+  display: flex;
+}
+
+button.quality {
+  width: 80%;
+  font-size: 12px;
+}
