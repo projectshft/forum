@@ -22,7 +22,7 @@ document.getElementsByClassName('post')[0].addEventListener('click', function (a
   let deleteButton = document.createElement('button');
 
   // Assign text values to elements
-  newPost.innerHTML = "<strong>" + postName + ": </strong>" + postMessage;  // let newPost = document.createTextNode(postName + ': ' + postMessage + '\n');
+  newPost.innerHTML = "<strong>" + postName + ": </strong>" + postMessage + '<br>';  // let newPost = document.createTextNode(postName + ': ' + postMessage + '\n');
   let upvoteText = document.createTextNode('\uD83D\uDC4D');
   let downvoteText = document.createTextNode('\uD83D\uDC4E');
   let deleteText = document.createTextNode('Delete');
@@ -31,20 +31,31 @@ document.getElementsByClassName('post')[0].addEventListener('click', function (a
   upvoteButton.appendChild(upvoteText);
   downvoteButton.appendChild(downvoteText);
   deleteButton.appendChild(deleteText);
-  upvoteButton.className += '' + 'btn btn-default btn-xs btn-post';
-  downvoteButton.className += '' + 'btn btn-default btn-xs btn-post';
+  upvoteButton.className += '' + 'btn btn-default btn-xs btn-post upvote';
+  newPost.setAttribute('upvotes', upvoteCount)
+  downvoteButton.className += '' + 'btn btn-default btn-xs btn-post downvote';
   deleteButton.className += '' + 'btn btn-default btn-xs btn-post';
 
   // Function to handle sorting of posts by upvotes in descending order
   function sortPosts() {
-    let listItems = document.getElementsByClassName('posts')[0].children[0];
-    listItems.sort()
+    let listItems = document.querySelectorAll('.posts li');
+    //let sortByUpvotes = function (a, b) {
+    //  return a.getAttribute('upvotes') > b.getAttribute('upvotes') ? 1 : -1;
+    //};
+    var listItemsArray = [].slice.call(listItems).sort( function (a, b) {
+      return a.getAttribute('upvotes') < b.getAttribute('upvotes') ? 1 : -1;
+    });
+    listItemsArray.forEach( function (element) {
+      element.parentNode.appendChild(element);
+    });
   };
 
   // Upvote functionality :)
   upvoteButton.addEventListener('click', function() {
     upvoteCount++;
     upvoteButton.innerHTML = '\uD83D\uDC4D ' + upvoteCount;
+    newPost.setAttribute('upvotes', upvoteCount);
+    sortPosts();
   });
 
   // Downvote functionality :(
@@ -63,8 +74,9 @@ document.getElementsByClassName('post')[0].addEventListener('click', function (a
 
   // Append new elements in the unordered list
   ul.append(newPost);
-  ul.appendChild(upvoteButton);
-  ul.appendChild(downvoteButton);
-  ul.appendChild(deleteButton);
+  let newListItem = ul.lastElementChild;
+  newListItem.insertAdjacentElement('beforeend', upvoteButton);
+  newListItem.insertAdjacentElement('beforeend', downvoteButton);
+  newListItem.insertAdjacentElement('beforeend', deleteButton);
 
 });
