@@ -2,6 +2,16 @@
 <head>
   <title>Forum</title>
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <style media="screen">
+    li {
+      list-style-type: none;
+    }
+    .btn-post {
+      margin: 0.5rem 0.5rem 2rem 0;
+    /*  margin-bottom: 2rem; */
+    /* margin-right: 0.5rem; */
+    }
+  </style>
 </head>
 <body>
   <div class="row">
@@ -12,32 +22,32 @@
       </div>
 
       <div class="posts">
+        <ul>
+
+        </ul>
       </div>
 
       <form style="margin-top:30px;">
         <h3>Add a new post</h3>
-        
+
         <div class="form-group">
           <input id="name" type="text"
             class="form-control"
-            placeholder="Name"></input>
+            placeholder="Name" minlength="1" required></input>
         </div>
-        
+
         <div class="form-group">
           <textarea id="message" type="text"
           class="form-control"
-          placeholder="Message"></textarea>
+          placeholder="Message" minlength="1" required></textarea>
         </div>
-        
-        <button type="submit" class="btn btn-primary">Post</button>
+
+        <button type="submit" class="post btn btn-primary">Post</button>
       </form>
 
     </div>
   </div>
-  
+
   <script src="main.js"></script>
 </body>
 </html>
-
-
-
