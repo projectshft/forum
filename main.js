@@ -19,32 +19,36 @@ document.getElementsByClassName('post')[0].addEventListener('click', function (a
   let newPost = document.createElement('li');
   let upvoteButton = document.createElement('button');
   let downvoteButton = document.createElement('button');
+  let editButton = document.createElement('button');
   let deleteButton = document.createElement('button');
 
   // Assign text values to elements
-  newPost.innerHTML = "<strong>" + postName + ": </strong>" + postMessage + '<br>';  // let newPost = document.createTextNode(postName + ': ' + postMessage + '\n');
+  newPost.innerHTML = '<span><strong>' + postName + ": </strong>" + '<span class="message" contenteditable="false">' + postMessage + '</span></span><br>';  // let newPost = document.createTextNode(postName + ': ' + postMessage + '\n');
   let upvoteText = document.createTextNode('\uD83D\uDC4D');
   let downvoteText = document.createTextNode('\uD83D\uDC4E');
-  let deleteText = document.createTextNode('Delete');
+  let editText = document.createTextNode('edit');
+  let deleteText = document.createTextNode('delete');
 
   // Append textNodes to new elements
   upvoteButton.appendChild(upvoteText);
   downvoteButton.appendChild(downvoteText);
+  editButton.appendChild(editText);
   deleteButton.appendChild(deleteText);
-  upvoteButton.className += '' + 'btn btn-default btn-xs btn-post upvote';
+
+  // Modify button attributes
   newPost.setAttribute('upvotes', upvoteCount)
-  downvoteButton.className += '' + 'btn btn-default btn-xs btn-post downvote';
+  upvoteButton.className += '' + 'btn btn-default btn-xs btn-post';
+  downvoteButton.className += '' + 'btn btn-default btn-xs btn-post';
+  editButton.className += '' + 'btn btn-default btn-xs btn-post';
   deleteButton.className += '' + 'btn btn-default btn-xs btn-post';
 
   // Function to handle sorting of posts by upvotes in descending order
   function sortPosts() {
     let listItems = document.querySelectorAll('.posts li');
-    //let sortByUpvotes = function (a, b) {
-    //  return a.getAttribute('upvotes') > b.getAttribute('upvotes') ? 1 : -1;
-    //};
-    var listItemsArray = [].slice.call(listItems).sort( function (a, b) {
-      return a.getAttribute('upvotes') < b.getAttribute('upvotes') ? 1 : -1;
-    });
+    let sortByUpvotes = function (a, b) {
+     return a.getAttribute('upvotes') < b.getAttribute('upvotes') ? 1 : -1;
+    };
+    var listItemsArray = [].slice.call(listItems).sort(sortByUpvotes);
     listItemsArray.forEach( function (element) {
       element.parentNode.appendChild(element);
     });
@@ -64,7 +68,23 @@ document.getElementsByClassName('post')[0].addEventListener('click', function (a
     downvoteButton.innerHTML = '\uD83D\uDC4E ' + downvoteCount;
   });
 
-  // Delete functionality - removes the message and its
+  // Edit functionality - edit an existing post's message
+  editButton.addEventListener('click', function() {
+    let postMessage = newListItem.children[0].lastElementChild;
+
+    // Handle message being saved
+    if (editButton.textContent === 'save') {
+      postMessage.setAttribute('contenteditable', 'false');
+      editButton.innerHTML = 'edit';
+      return;
+    }
+
+    // Make the message editable and change the edit text to 'save'
+    postMessage.setAttribute('contenteditable', 'true');
+    editButton.innerHTML = 'save';
+  });
+
+  // Delete functionality - removes the message entirely
   deleteButton.addEventListener('click', function() {
     newPost.remove();
     upvoteButton.remove();
@@ -77,6 +97,7 @@ document.getElementsByClassName('post')[0].addEventListener('click', function (a
   let newListItem = ul.lastElementChild;
   newListItem.insertAdjacentElement('beforeend', upvoteButton);
   newListItem.insertAdjacentElement('beforeend', downvoteButton);
+  newListItem.insertAdjacentElement('beforeend', editButton);
   newListItem.insertAdjacentElement('beforeend', deleteButton);
 
 });
