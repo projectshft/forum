@@ -14,7 +14,7 @@
       <div class="posts">
       </div>
 
-      <form style="margin-top:30px;">
+      <form style="margin-top:30px;" onsubmit="event.preventDefault();">
         <h3>Add a new post</h3>
         
         <div class="form-group">
@@ -29,7 +29,7 @@
           placeholder="Message"></textarea>
         </div>
         
-        <button type="submit" class="btn btn-primary">Post</button>
+        <button id="submit" class="btn btn-primary">Post</button>
       </form>
 
     </div>
