@@ -3,7 +3,7 @@ document.getElementById('submit').addEventListener('click', function() {
     var message = document.getElementById('message').value; 
 
     var postDiv = document.getElementsByClassName('post');
-
+    // Comment
 
 }); 
 
