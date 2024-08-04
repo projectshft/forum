@@ -1,43 +1,54 @@
 <html>
 <head>
   <title>Forum</title>
-  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
+
+
+
 <body>
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-
-      <div class="page-header">
-        <h1>Forum</h1>
+    <div class="col s12 m8 offset-m2">
+      <div class="card" id="postCard">
+        <div class="card-content">
+          <h3>Add a New Post</h3>
+          <form onsubmit="event.preventDefault();">
+            <div class="input-field">
+              <input id="name" type="text" class="validate">
+              <label for="name">What's your name?</label>
+            </div>
+            <div class="input-field">
+              <input id="message" type="text" class="validate">
+              <label for="message">Tell us what you're thinking</label>
+            </div>
+            <div class="center">
+              <a id="submit" class="btn-floating btn-large waves-effect waves-light red">
+                <i class="material-icons">+</i>
+              </a>
+            </div>
+            <a id="viewPosts" class="btn btn-link">View Posts</a>
+          </form>
+        </div>
       </div>
 
-      <div class="posts">
+     
+      <div id="posts" class="posts hide"></div>
+
+
+      <div class="center posts-page">
+        <a id="backToForm" class="btn btn-link hide">Back to Form</a>
       </div>
-
-      <form style="margin-top:30px;" onsubmit="event.preventDefault();">
-        <h3>Add a new post</h3>
-        
-        <div class="form-group">
-          <input id="name" type="text"
-            class="form-control"
-            placeholder="Name"></input>
-        </div>
-        
-        <div class="form-group">
-          <textarea id="message" type="text"
-          class="form-control"
-          placeholder="Message"></textarea>
-        </div>
-        
-        <button id="submit" class="btn btn-primary">Post</button>
-      </form>
-
     </div>
   </div>
-  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
   <script src="main.js"></script>
 </body>
+
 </html>
+
 
 
 

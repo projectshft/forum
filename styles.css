@@ -1,0 +1,75 @@
+.card-content {
+  padding: 20px;
+}
+
+.post-container {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.post-body {
+  margin-top: 10px;
+}
+
+.reply-container {
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #f0f0f0;
+}
+
+.reply-input {
+  margin-top: 10px;
+}
+
+.reply {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-floating {
+  margin: 10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.hide {
+  display: none;
+}
+
+.btn-link {
+  background-color: transparent;
+  color: #0277bd;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.red-orange {
+  color: orangered;
+  font-size: 10px;
+  font-weight: 700;
+}
+.purple {
+  color: blueviolet;
+  font-size: 10px;
+  font-weight: 700;
+}
